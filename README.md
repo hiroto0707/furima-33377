@@ -1,11 +1,16 @@
 # テーブル設定 
 
 ## users テーブル
-| Column     | Type   | Options     |
-| --------   | ------ | ----------- |
-| nickname   | string | not null    |
-| email      | string | not null    |
-| password   | string | not null    |
+| Column     | Type   | Options       |
+| --------   | ------ | -----------   |
+| nickname   | string | not null      |
+| email      | string | not null      |
+| password   | string | not null      | 
+| first_name | string | not null      |
+| last_name  | string | not null      |
+| first_name_kana | string | not null |
+| last_name_kana  | string | not null |
+| birthday   | string | not null      | 
 
 ## Association
 - has_many : items 
