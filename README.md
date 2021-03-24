@@ -4,8 +4,7 @@
 | Column     | Type   | Options                   |
 | --------   | ------ | ------------------------- |
 | nickname   | string | null: false               | 
-| email      | string | unique: true              |
-| password   | string | null: false               |
+| email      | string | unique: true, null: false |
 | encrypted_password  | string | null: false      |
 | first_name | string | null: false               |
 | last_name  | string | null: false               |
@@ -24,11 +23,12 @@
 | name            | string  | null: false |
 | description     | text    | null: false |
 | status_id       | integer | null: false |
-| category _id    | integer | null: false |
-| delivery fee_id | integer | null: false |
+| category_id     | integer | null: false |
+| delivery_fee_id | integer | null: false |
 | area_id         | integer | null: false |
 | day_id          | integer | null: false |
 | price           | integer | null: false |
+| user            | references | null: false, foreign_key: true  |
 
 ## Association
 - has_one : purchase
@@ -38,19 +38,21 @@
 | Column     | Type   | Options                             |
 | --------   | ------ | ----------------------------------  |
 | item       | references | null: false, foreign_key: true  |
+| user       | references | null: false, foreign_key: true  |
 
 ## Association
 - belong_to : user
 - has_one : place
 
 ## places テーブル
-| Column          | Type    | Options                        |
-| -------------   | ------  | -------------------------------|
-| municipalities  | integer | null: false, foreign_key: true |
-| address         | integer | null: false, foreign_key: true |
-| building number | integer | null: false, foreign_key: true |
-| postal code     | integer | null: false, foreign_key: true |
-| phone number    | integer | null: false, foreign_key: true |
+| Column          | Type    | Options                           |
+| -------------   | ------  | --------------------------------- |
+| municipalities  | string  | null: false, foreign_key: true    |
+| address         | string  | null: false, foreign_key: true    |
+| building number | string  | null: false, foreign_key: true    |
+| postal code     | string  | null: false, foreign_key: true    |
+| phone number    | string  | null: false, foreign_key: true    |
+| purchase        | references | null: false, foreign_key: true |
 
 ## Association
 - belongs_to : purchase
