@@ -42,6 +42,7 @@
 
 ## Association
 - belong_to : user
+- has_one : item
 - has_one : place
 
 ## places テーブル
@@ -49,9 +50,9 @@
 | -------------   | ------  | --------------------------------- |
 | municipalities  | string  | null: false, foreign_key: true    |
 | address         | string  | null: false, foreign_key: true    |
-| building number | string  | null: false, foreign_key: true    |
-| postal code     | string  | null: false, foreign_key: true    |
-| phone number    | string  | null: false, foreign_key: true    |
+| building_number | string  | null: false, foreign_key: true    |
+| postal_code     | string  | null: false, foreign_key: true    |
+| phone_number    | string  | null: false, foreign_key: true    |
 | purchase        | references | null: false, foreign_key: true |
 
 ## Association
