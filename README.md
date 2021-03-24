@@ -42,7 +42,7 @@
 
 ## Association
 - belong_to : user
-- has_one : item
+- belongs_to  : item
 - has_one : place
 
 ## places テーブル
