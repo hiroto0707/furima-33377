@@ -12,6 +12,7 @@
 | last_name_kana | string | null: false  |
 | birthday     | integer | null: false   |
 
+
 ## Association
 - has_many : items 
 - has_many : purchases
