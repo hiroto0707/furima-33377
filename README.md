@@ -1,54 +1,60 @@
 # テーブル設定 
 
-## users テーブル
-| Column     | Type   | Options       |
-| --------   | ------ | -----------   |
-| nickname   | string | not null      |
-| email      | string | not null      |
-| password   | string | not null      | 
-| first_name | string | not null      |
-| last_name  | string | not null      |
-| first_name_kana | string | not null |
-| last_name_kana  | string | not null |
-| birthday   | string | not null      | 
+## users テーブル 
+| Column     | Type   | Options                   |
+| --------   | ------ | ------------------------- |
+| nickname   | string | null: false               | 
+| email      | string | unique: true, null: false |
+| encrypted_password  | string | null: false      |
+| first_name | string | null: false               |
+| last_name  | string | null: false               |
+| first_name_kana | string | null: false          |
+| last_name_kana | string | null: false           |
+| birthday     | date | null: false               |           
+
 
 ## Association
 - has_many : items 
 - has_many : purchases
 
-
 ## items テーブル
-| Column     | Type   | Options     |
-| --------   | ------ | ----------- |
-| image      | ActiveStorageで実装  | 
-| name       | string | not null    |
-| description | text  | not null    |
-| status     | string | not null    |
-| category   | string | not null    |
-| delivery fee | string | not null  |
-| area       | string | not null    |
-| days       | string | not null    |
-| price      | string | not null    |
-| seller     | string | not null    |
+| Column          | Type    | Options     |
+| --------        | ------  | ----------- |
+| name            | string  | null: false |
+| description     | text    | null: false |
+| status_id       | integer | null: false |
+| category_id     | integer | null: false |
+| delivery_fee_id | integer | null: false |
+| area_id         | integer | null: false |
+| day_id          | integer | null: false |
+| price           | integer | null: false |
+| user            | references | null: false, foreign_key: true  |
 
 ## Association
-- has_one : purchases 
+- has_one : purchase
 - belongs_to : user
 
 ## purchases テーブル
-| Column     | Type   | Options     |
-| --------   | ------ | ----------- |
-| item       | foreign_key: true    |
-| buyer      | string | not null    |
+| Column     | Type   | Options                             |
+| --------   | ------ | ----------------------------------  |
+| item       | references | null: false, foreign_key: true  |
+| user       | references | null: false, foreign_key: true  |
 
 ## Association
 - belong_to : user
+- belongs_to  : item
 - has_one : place
 
 ## places テーブル
-| Column     | Type   | Options     |
-| --------   | ------ | ----------- |
-|street address | string | not null |
+| Column          | Type    | Options     |
+| -------------   | ------  | ----------- |
+| area_id         | integer | null: false |
+| municipalities  | string  | null: false |
+| address         | string  | null: false |
+| building_number | string  |             |
+| postal_code     | string  | null: false |
+| phone_number    | string  | null: false |
+| purchase        | references | null: false, foreign_key: true |
 
 ## Association
 - belongs_to : purchase
