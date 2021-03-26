@@ -1,16 +1,26 @@
+# devise rails g devise userがうまく行かなかった
+# rails d devise userで削除する
+# マイグレーションファイルでエラーが起きた場合は、
+# ①rails db:migrate:status
+# ②rails db:rollback / rails db:migrate:reset(全部がdownになってから！)
+# ③rails db:migrate:statusで全部upになってるかの確認
+
+#上記のコメントアウトは自分が実際に解決できなかったエラーを解決するヒントになったもの。
+#今後のdeviseで作成したファイルを手動で消してしまった時のヒントにするために残しておきたい
+
 # frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :nickname,               null: false
-      t.string :first_name,               null: false
-      t.string :last_name,               null: false
-      t.string :first_name_kana,               null: false
-      t.string :last_name_kana,               null: false
-      t.string :birthday,               null: false
-      t.string :email,              null: false, default: ""
+      t.string :nickname,           null: false
+      t.string :first_name,         null: false
+      t.string :last_name,          null: false
+      t.string :first_name_kana,    null: false
+      t.string :last_name_kana,     null: false
+      t.date :birthday,             null: false
+      t.string :email,               null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
