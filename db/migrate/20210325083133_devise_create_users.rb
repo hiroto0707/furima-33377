@@ -5,6 +5,9 @@
 # ②rails db:rollback / rails db:migrate:reset(全部がdownになってから！)
 # ③rails db:migrate:statusで全部upになってるかの確認
 
+#上記のコメントアウトは自分が実際に解決できなかったエラーを解決するヒントになったもの。
+#今後のdeviseで作成したファイルを手動で消してしまった時のヒントにするために残しておきたい
+
 # frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
