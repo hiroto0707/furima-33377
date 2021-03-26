@@ -10,13 +10,7 @@ RSpec.describe User, type: :model do
       @user.nickname = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
-    end
- 
-    it 'nicknameが41字以上では登録できない' do
-      @user.nickname = ' 00000000000000000000000000000000000000000'
-      @user.valid?
-      expect(@user.errors.full_messages).to include('Nickname is too long (maximum is 41 characters)')
-    end   
+    end  
 
     it 'emailが空では登録できない' do
       @user.email = ''
@@ -75,10 +69,35 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Last name kana can't be blank")
     end
 
-    it 'birthdayが空では登録できない' do
-      @user.birthday = ''
+    it 'first_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
+      @user.first_name = 'aaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Birthday can't be blank")
+      expect(@user.errors.full_messages).to include("First name is invalid")
     end
-  end
+
+    it 'last_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
+      @user.last_name = 'aaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name is invalid")
+    end
+    
+    it 'first_name_kanaのフリガナは、全角（カタカナ）でなければ登録できない' do
+      @user.first_name_kana = 'a'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana is invalid")
+    end
+
+    it 'last_name_kanaのフリガナは、全角（カタカナ）でなければ登録できない' do
+      @user.last_name_kana = 'a'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name kana is invalid")
+    end
+
+    it 'passwordは英数字混合でなければ登録できない' do
+      @user.password = "ああああああ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")   
+    end
+
+  end  
 end  
