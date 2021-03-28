@@ -1,13 +1,19 @@
 class Item < ApplicationRecord
-  belongs_to :genre
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :status
+  belongs_to :delivery_fee
+  belongs_to :area
+  belongs_to :day
+
   has_one_attached :image
 
-  validates :name, presence: true 
-  validates :description, presence: true
-  validates :status_id, presence: true
-  validates :category_id, presence: true
-  validates :delivery_fee_id, presence: true 
-  validates :area_id, presence: true 
-  validates :day_id, presence: true
-  validates :price, presence: true 
+ validates :name, presence: true 
+ validates :description, presence: true
+ validates :status_id, presence: true
+ validates :category_id, presence: true
+ validates :area_id, presence: true
+ validates :day_id, presence: true
+ validates :price, presence: true
+ validates :image, presence: true
 end
