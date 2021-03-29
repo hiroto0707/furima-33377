@@ -12,8 +12,10 @@ class Item < ApplicationRecord
  validates :description, presence: true
  validates :status_id, presence: true
  validates :category_id, presence: true
+ validates :delivery_fee_id, presence: true
  validates :area_id, presence: true
  validates :day_id, presence: true
- validates :price, presence: true
+ validates :price, presence: true, numericality: { only_integer: true}
+ validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 1000000, message: "is out of setting range" }
  validates :image, presence: true
 end
