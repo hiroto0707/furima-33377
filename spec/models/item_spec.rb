@@ -32,6 +32,12 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Description can't be blank")
     end
 
+    it '〇〇_idが0の場合出品できない' do
+       @item.price = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is out of setting range")
+    end
+
     it 'status_idが空では登録できない' do
         @item.status_id = ''
         @item.valid?
@@ -97,6 +103,8 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is out of setting range")
     end
+
+
 
   end  
 end    
