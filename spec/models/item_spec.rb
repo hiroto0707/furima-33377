@@ -18,7 +18,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
-    end
+    
 
     it 'nameがからでは登録できない' do
         @item.name = ''
@@ -32,17 +32,17 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Description can't be blank")
     end
 
-    it '〇〇_idが0の場合出品できない' do
-       @item.price = 1
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
-    end
-
     it 'status_idが空では登録できない' do
         @item.status_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
     end
+
+    it 'status_idが0の場合出品できない' do
+      @item.status_id= 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status must be other than 0")
+  end
 
     it 'category_idが空では登録できない' do
       @item.category_id = ''
@@ -50,11 +50,23 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
 
+    it 'category_idが0の場合出品できない' do
+      @item.category_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 0")
+  end
+
     it 'delivery_fee_idが空では登録できない' do
       @item.delivery_fee_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
     end
+
+    it 'delivery_fee_idが0の場合出品できない' do
+      @item.delivery_fee_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery fee must be other than 0")
+  end
 
     it 'area_idが空では登録できない' do
         @item.area_id = ''
@@ -62,11 +74,23 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Area can't be blank")
     end
 
+    it 'area_idが0の場合出品できない' do
+      @item.area_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Area must be other than 0")
+  end
+
     it 'day_idが空では登録できない' do
         @item.day_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Day can't be blank")
     end
+
+    it 'day_idが0の場合出品できない' do
+      @item.day_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Day must be other than 0")
+  end
 
     it 'priceが空では登録できない' do
         @item.price = ''
@@ -104,7 +128,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price is out of setting range")
     end
 
-
+  end
 
   end  
 end    
