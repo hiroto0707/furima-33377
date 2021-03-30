@@ -4,6 +4,8 @@
 # ①rails db:migrate:status
 # ②rails db:rollback / rails db:migrate:reset(全部がdownになってから！)
 # ③rails db:migrate:statusで全部upになってるかの確認
+#マイグレーションファイルは上から順に読み込まれる。なので外部キーを活用する際は外部キーとなるものが上にくる必要がある。
+
 
 #上記のコメントアウトは自分が実際に解決できなかったエラーを解決するヒントになったもの。
 #今後のdeviseで作成したファイルを手動で消してしまった時のヒントにするために残しておきたい
