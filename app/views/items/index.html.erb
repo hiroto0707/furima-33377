@@ -119,12 +119,21 @@
     </ul>
   </div>
   <%# /FURIMAの特徴 %>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
+<<<<<<< Updated upstream
        <% @items.each do |item| %>
        <li class='list'>
+=======
+
+      <li class='list'>
+>>>>>>> Stashed changes
         <%= link_to "#" do %>
         <div class='item-img-content'>
           <%# 商品が売れていればsold outを表示しましょう %>
@@ -150,9 +159,13 @@
           </div>     
         <% end %>      
       </li>
+<<<<<<< Updated upstream
        <% end %>
 
       <% if @items.length == 0 %>
+=======
+
+>>>>>>> Stashed changes
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -170,8 +183,11 @@
         </div>
         <% end %>
       </li>
+<<<<<<< Updated upstream
       <% end %>
     </ul>
+=======
+>>>>>>> Stashed changes
   </div>
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
