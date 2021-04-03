@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
 
  private
  def move_to_root_path
-  unless user_signed_in? && current_user.id == @item.user_id
+  unless current_user.id == @item.user_id
     redirect_to root_path
   end  
 end
