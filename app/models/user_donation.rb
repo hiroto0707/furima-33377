@@ -19,5 +19,7 @@ class UserDonation
     BuildingNumber.create(building_number: building_number)
     PostalCode.create(postal_code: postal_code)
     PhoneNumber.create(phone_number: phone_number)
+    Order.create(user_id: user_id, item_id: item_id)
+    Place.create(order_id: order_id)
   end
 end
