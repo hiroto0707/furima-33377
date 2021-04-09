@@ -7,6 +7,8 @@ class UserDonation
    validates :address,presence: true
    validates :postal_code,presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
    validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
+
+   attr_accessor :token
   
 
   def save
