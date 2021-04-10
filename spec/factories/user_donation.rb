@@ -6,6 +6,8 @@ FactoryBot.define do
     building_number    {"藤沢ビル111"}
     postal_code        {"123-4567"} 
     phone_number       {"00011112222"} 
-    token     {"tok_abcdefghijk00000000000000000"}
+    token              {"tok_abcdefghijk00000000000000000"}
+    user_id            {2}
+    item_id            {2}
   end
 end

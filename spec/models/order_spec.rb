@@ -16,13 +16,13 @@ RSpec.describe Order, type: :model do
       it "user_idが空では購入できないこと" do
         @order.user_id = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Status can't be blank")
+        expect(@order.errors.full_messages).to include("User must exist", "Item must exist")
       end
 
       it "item_idが空では購入できないこと" do
         @order.item_id = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Status can't be blank")
+        expect(@order.errors.full_messages).to include("User must exist", "Item must exist")
       end
     end
   end
