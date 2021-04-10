@@ -1,11 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :create]
   before_action :item_item, only: [:index, :create]
+  before_action :item_return, only: [:index, :create]
+
 
   def index
-    if current_user.id == @item.user_id
-      redirect_to root_path and return
-    end
     @order = UserDonation.new
     if @item.order.present?
       redirect_to root_path and return
@@ -39,5 +38,11 @@ class OrdersController < ApplicationController
 
   def item_item
     @item = Item.find(params[:item_id])
+  end
+
+  def item_return
+    if current_user.id == @item.user_id
+      redirect_to root_path and return
+    end
   end
 end

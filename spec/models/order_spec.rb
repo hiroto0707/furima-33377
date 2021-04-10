@@ -12,6 +12,18 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Token can't be blank")
       end
+
+      it "user_idが空では購入できないこと" do
+        @order.user_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Status can't be blank")
+      end
+
+      it "item_idが空では購入できないこと" do
+        @order.item_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Status can't be blank")
+      end
     end
   end
 end
