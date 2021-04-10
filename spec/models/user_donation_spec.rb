@@ -75,6 +75,12 @@ RSpec.describe UserDonation, type: :model do
         @order.phone_number = 'a1'
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it 'phone_numberは12桁以上では登録できない' do
+        @order.phone_number = 123456789123
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is invalid")
     end
     end
   end

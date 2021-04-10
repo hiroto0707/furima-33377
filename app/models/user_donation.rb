@@ -8,9 +8,10 @@ class UserDonation
    validates :postal_code,presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
    validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
 
+   validates :token, presence: true
    attr_accessor :token
-  
 
+  
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
     Place.create(municipalities: municipalities, address: address, building_number: building_number,postal_code: postal_code,phone_number: phone_number,area_id: area_id, order_id: order.id)

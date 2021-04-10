@@ -119,7 +119,7 @@
        <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
-          <% if item.present? %>
+          <% if item.order.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
