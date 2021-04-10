@@ -3,11 +3,11 @@ class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     if current_user.id == @item.user_id
-      redirect_to root_path
+      redirect_to root_path and return
     end
     @order = UserDonation.new
     if @item.order.present?
-      redirect_to root_path
+      redirect_to root_path and return
     end
   end
 
