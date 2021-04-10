@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :create, :edit]
+  before_action :authenticate_user!, except: [:index, :create]
+  before_action :item_item, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     if current_user.id == @item.user_id
       redirect_to root_path and return
     end
@@ -12,7 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order = UserDonation.new(donation_params)
     if @order.valid?
       pay_item
@@ -35,5 +35,9 @@ class OrdersController < ApplicationController
     card: donation_params[:token],   
     currency: 'jpy'
     )
+  end
+
+  def item_item
+    @item = Item.find(params[:item_id])
   end
 end

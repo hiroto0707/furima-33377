@@ -1,14 +1,15 @@
 class UserDonation
   include ActiveModel::Model
-  attr_accessor :area_id,:municipalities,:address,:building_number,:postal_code,:phone_number,:user_id,:item_id,:order_id
+  attr_accessor :area_id,:municipalities,:address,:building_number,:postal_code,:phone_number,:user_id,:item_id
 
-   validates :area_id,numericality: { other_than: 0 }
-   validates :municipalities,presence: true
-   validates :address,presence: true
-   validates :postal_code,presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
-   validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
-
-   validates :token, presence: true
+  validates :area_id,numericality: { other_than: 0 }
+  with_options presence: true
+    validates :municipalities
+    validates :address
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :phone_number, format: { with: /\A\d{11}\z/ }
+    validates :token
+  end
    attr_accessor :token
 
   
