@@ -16,6 +16,7 @@ RSpec.describe UserDonation, type: :model do
       end
 
       it 'building_numberが空でも登録できる' do
+        @order.building_number = ''
         expect(@order).to be_valid
       end
     end  
@@ -62,6 +63,13 @@ RSpec.describe UserDonation, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Postal code is invalid")
       end
+
+      it 'postal_codeはハイフンなしでは登録できない' do
+        @order.postal_code = 111111
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Postal code is invalid")
+      end
+
 
       it 'phone_numberが空では登録できない' do
         @order.phone_number = ''

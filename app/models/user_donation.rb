@@ -1,6 +1,6 @@
 class UserDonation
   include ActiveModel::Model
-  attr_accessor :area_id,:municipalities,:address,:building_number,:postal_code,:phone_number,:user_id,:item_id
+  attr_accessor :area_id,:municipalities,:address,:building_number,:postal_code,:phone_number,:user_id,:item_id, :token
 
   validates :area_id,numericality: { other_than: 0 }
   with_options presence: true do
@@ -12,8 +12,6 @@ class UserDonation
     validates :user_id
     validates :item_id
   end
-
-   attr_accessor :token
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
