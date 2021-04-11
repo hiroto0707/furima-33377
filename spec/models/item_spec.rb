@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品登録' do
     context '商品出品登録ができる時' do
-      it 'name、description、status_id、category_id、delivery_fee_id、area_id、day_id、priceが存在すれば登録できること' do
+      it 'name、description、status_id、category_id、delivery_fee_id、area_id、day_id、priceが存在すれば登録できる' do
       expect(@item).to be_valid
       end
     end  
@@ -78,7 +78,7 @@ RSpec.describe Item, type: :model do
       @item.area_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include("Area must be other than 0")
-  end
+    end
 
     it 'day_idが空では登録できない' do
         @item.day_id = ''
@@ -105,7 +105,7 @@ RSpec.describe Item, type: :model do
     end
 
     it '価格は半角英数混合では登録できないこと' do
-      @item.price = 'a1'
+       @item.price = 'a1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
     end
