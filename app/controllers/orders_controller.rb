@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
   end
 
   def item_return
-    if current_user.id == @item.user_id
+    if @item.order.present? || current_user.id == @item.user_id
       redirect_to root_path and return
     end
   end
