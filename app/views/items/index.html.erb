@@ -119,6 +119,7 @@
        <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
+          <%= image_tag item.image, class: 'item-img' %>
           <% if item.order.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
@@ -126,8 +127,6 @@
           <% end %>
         </div>
         <div class='item-info'>
-          <%= image_tag item.image, class: 'item-img' %>
-          </div>
           <h3 class='item-name'>
             <%= item.name %>
           </h3>
@@ -138,6 +137,7 @@
               <span class='star-count'>0</span>
             </div>
           </div>     
+          </div>
         <% end %>      
       </li>
        <% end %>
