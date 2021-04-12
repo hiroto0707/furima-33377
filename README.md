@@ -1,16 +1,16 @@
 # テーブル設定 
 
 ## users テーブル 
-| Column     | Type   | Options                    |
-| --------   | ------ | -------------------------  |
-| nickname   | string | null: false                | 
-| email      | string | unique: true, null: false  |
-| encrypted_password  | string | null: false       |
-| first_name | string | null: false                |
-| last_name  | string | null: false                |
-| first_name_kana | string | null: false           |
-| last_name_kana | string | null: false            |
-| birthday     | date | null: false                |
+| Column     | Type   | Options                   |
+| --------   | ------ | ------------------------- |
+| nickname   | string | null: false               | 
+| email      | string | unique: true, null: false |
+| encrypted_password  | string | null: false      |
+| first_name | string | null: false               |
+| last_name  | string | null: false               |
+| first_name_kana | string | null: false          |
+| last_name_kana | string | null: false           |
+| birthday     | date | null: false               |
 
 
 ## Association
@@ -18,17 +18,17 @@
 - has_many : orders
 
 ## items テーブル
-| Column          | Type    | Options      |
-| --------        | ------  | -----------  |
-| name            | string  | null: false  |
-| description     | text    | null: false  |
-| status_id       | integer | null: false  |
-| category_id     | integer | null: false  |
-| delivery_fee_id | integer | null: false  |
-| area_id         | integer | null: false  |
-| day_id          | integer | null: false  |
-| price           | integer | null: false  |
-| user            | references | null: false, foreign_key: true  |
+| Column          | Type    | Options     |
+| --------        | ------  | ----------  |
+| name            | string  | null: false |
+| description     | text    | null: false |
+| status_id       | integer | null: false |
+| category_id     | integer | null: false |
+| delivery_fee_id | integer | null: false |
+| area_id         | integer | null: false |
+| day_id          | integer | null: false |
+| price           | integer | null: false |
+| user            | references | null: false, foreign_key: true |
 
 ## Association
 - has_one : order
