@@ -46,14 +46,14 @@
 - has_one : place
 
 ## places テーブル
-| Column          | Type    | Options     |
-| -------------   | ------  | ----------- |
-| area_id         | integer | null: false |
-| municipalities  | string  | null: false |
-| address         | string  | null: false |
-| building_number | string  |             |
-| postal_code     | string  | null: false |
-| phone_number    | string  | null: false |
+| Column          | Type    | Options      |
+| -------------   | ------  | -----------  |
+| area_id         | integer | null: false  |
+| municipalities  | string  | null: false  |
+| address         | string  | null: false  |
+| building_number | string  |              |
+| postal_code     | string  | null: false  |
+| phone_number    | string  | null: false  |
 | order        | references | null: false, foreign_key: true |
 
 ## Association
